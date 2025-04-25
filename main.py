@@ -22,7 +22,7 @@ class BombTimer:
         self.root.after(10, self.update_ui)
 
     def setup_ui(self):
-        self.root.title("TimerByLXIX")
+        self.root.title("Timer By LXIX v0.1")
         self.root.geometry("400x300")
         self.root.configure(bg="#1A1A2E")
         self.root.resizable(False, False)
