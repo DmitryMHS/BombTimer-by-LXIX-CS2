@@ -45,7 +45,11 @@
 
 ## 📷 Интерфейс
 
-![TimerByLXIX GUI](https://sun9-36.userapi.com/impg/QTna2Zo4FeR611KbiJkNmtGQJUVSNlaXkrVSwQ/LpjJ_gc-_mc.jpg?size=400x331&quality=95&sign=b535269bccb01666ffd7e2e56e4035b0&type=album)
+![TimerByLXIX GUI](https://sun9-32.userapi.com/impg/HEHDXRwbiw-8Y22pWp7PFZ6aoiyRcjYPrP2k4Q/QVJc1eYNByg.jpg?size=401x381&quality=95&sign=b740849ebd013fb4e370fdce381556a2&type=album)
+
+## 🌀 Работа в действии
+
+![TimerByLXIX Demo](https://media.giphy.com/media/YOUR_GIF_LINK_HERE/giphy.gif)
 
 ---
 
