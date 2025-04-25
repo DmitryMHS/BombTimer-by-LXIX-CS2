@@ -49,7 +49,7 @@
 
 ## 🌀 Работа в действии
 
-![TimerByLXIX Demo](https://files.catbox.moe/v41hod.gif)
+![TimerByLXIX Demo](https://i.imgur.com/TrWaeL1.gif)
 
 ---
 
