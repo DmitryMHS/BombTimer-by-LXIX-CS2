@@ -1,3 +1,5 @@
+# Copyright (c) 2025 LXIX. Licensed under MIT.
+
 import tkinter as tk
 from tkinter import font as tkfont
 import pyautogui
