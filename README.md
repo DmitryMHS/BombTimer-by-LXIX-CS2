@@ -49,7 +49,7 @@
 
 ## 🌀 Работа в действии
 
-<img src="https://i.imgur.com/TrWaeL1.gif" width="400" alt="TimerByLXIX Demo">
+![TimerByLXIX Demo](https://i.imgur.com/TrWaeL1.gif)
 
 ---
 
