@@ -1,0 +1,5 @@
+pyautogui==0.9.53
+Pillow==8.4.0
+tkinter==3.9.7
+ctypes==1.1.0
+webbrowser==2.5.0
