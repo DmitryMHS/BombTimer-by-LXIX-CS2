@@ -49,9 +49,10 @@
 
 ## 🌀 Работа в действии
 
-![TimerByLXIX Demo](https://i.imgur.com/TrWaeL1.gif)
+<img src="https://i.imgur.com/TrWaeL1.gif" width="400" alt="TimerByLXIX Demo">
 
 ---
+
 
 ## 📦 Установка
 
