@@ -49,7 +49,7 @@
 
 ## 🌀 Работа в действии
 
-![TimerByLXIX Demo](https://i.imgur.com/TrWaeL1.gif)
+![Demo GIF](https://github.com/DmitryMHS/BombTimer-by-LXIX-CS2/raw/main/DEMO.gif)
 
 ---
 
