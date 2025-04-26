@@ -1,5 +1,4 @@
-```markdown
-# 💣 TimerByLXIX — CS2 Bomb Timer v2.0 (YOLOv8 Edition)
+# 💣 TimerByLXIX — CS2 Bomb Timer v2.0 (YOLO Edition)
 
 ---
 
