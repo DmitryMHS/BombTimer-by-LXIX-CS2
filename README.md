@@ -71,9 +71,7 @@
    ```bash
    pip install -r requirements.txt
    ```
-   Пример содержимого `requirements.txt`:
-   ```
-
+   
 3. Обученная модель `best.pt` должна быть в папке с программой
 
 ---
