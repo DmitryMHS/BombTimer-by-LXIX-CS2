@@ -117,4 +117,3 @@ python main.py
   <strong>Создано с ❤️ для игроков CS2</strong><br>
   ✉️ TG: @LXIX_DEVELOPER | 💼 GitHub: DmitryMHS
 </div>
-```
