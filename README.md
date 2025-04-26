@@ -115,5 +115,5 @@ python main.py
 
 <div align="center">
   <strong>Создано с ❤️ для игроков CS2</strong><br>
-  ✉️ TG: @LXIX_DEVELOPER | 💼 GitHub: DmitryMHS
+  ✉️ TG: @LXIX_DEVELOPER | 💼 Discord: LXIX_DEV
 </div>
