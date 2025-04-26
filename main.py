@@ -2,28 +2,31 @@
 
 import tkinter as tk
 from tkinter import font as tkfont
-import pyautogui
 import time
 import threading
 from PIL import Image, ImageTk
 import ctypes
 import webbrowser
-import math
+from ultralytics import YOLO
+import cv2
+import numpy as np
+import pyautogui
 
 # Настройка иконки для Windows
-myappid = 'lxix.timerbombcs2.0.6'
+myappid = 'lxix.timerbombcs2.2.0'
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 class BombTimer:
     def __init__(self, root):
         self.root = root
+        self.model = YOLO('best.pt')  # Загружаем обученную модель
         self.setup_ui()
         self.setup_state()
         self.setup_threads()
         self.root.after(10, self.update_ui)
 
     def setup_ui(self):
-        self.root.title("Timer By LXIX v0.1")
+        self.root.title("Timer By LXIX v2.0 (YOLO Edition)")
         self.root.geometry("400x350")
         self.root.configure(bg="#1A1A2E")
         self.root.resizable(False, False)
@@ -40,14 +43,12 @@ class BombTimer:
         self.status_font = tkfont.Font(family="Arial", size=20, weight="bold")
         self.button_font = tkfont.Font(family="Arial", size=12, weight="bold")
 
-        self.title_label = tk.Label(self.root, text="TimerByLXIX", font=self.title_font, fg="#E94560", bg="#1A1A2E")
+        self.title_label = tk.Label(self.root, text="TimerByLXIX (YOLO)", font=self.title_font, fg="#E94560", bg="#1A1A2E")
         self.title_label.pack(pady=10)
 
-        # Статус (Жду Бомбу / Раздефано!)
         self.status_label = tk.Label(self.root, text="", font=self.status_font, fg="#E94560", bg="#1A1A2E")
         self.status_label.pack(pady=(5, 0))
 
-        # Круг с таймером
         self.circle_frame = tk.Frame(self.root, bg="#1A1A2E", width=140, height=140)
         self.circle_frame.pack(pady=10)
         self.circle_frame.pack_propagate(False)
@@ -112,22 +113,34 @@ class BombTimer:
     def bomb_scanner(self):
         while True:
             try:
-                if not self.running and not self.defused:
-                    bomb = pyautogui.locateOnScreen('bomb.png', confidence=0.7)
-                    if bomb:
-                        with self.lock:
-                            self.running = True
-                            self.start_time = time.perf_counter()
-                            self.remaining = 40
-                elif self.running and not self.defused:
-                    green = pyautogui.locateOnScreen('green_bomb.png', confidence=0.7)
-                    if green:
-                        with self.lock:
-                            self.defused = True
-                            self.running = False
-                            self.reset_timer_time = time.time() + 3
+                screenshot = pyautogui.screenshot()
+                frame = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
+                
+                results = self.model(frame, conf=0.7)  # Детекция с уверенностью >70%
+                
+                red_bomb_detected = False
+                green_bomb_detected = False
+                
+                for result in results:
+                    for box in result.boxes:
+                        class_id = int(box.cls)
+                        if class_id == 0:  # red_bomb
+                            red_bomb_detected = True
+                        elif class_id == 1:  # green_bomb
+                            green_bomb_detected = True
+
+                with self.lock:
+                    if not self.running and not self.defused and red_bomb_detected:
+                        self.running = True
+                        self.start_time = time.perf_counter()
+                        self.remaining = 40
+                    elif self.running and not self.defused and green_bomb_detected:
+                        self.defused = True
+                        self.running = False
+                        self.reset_timer_time = time.time() + 3
+
             except Exception as e:
-                print(f"Ошибка сканирования: {e}")
+                print(f"Ошибка детекции: {e}")
             time.sleep(0.1)
 
     def draw_progress_circle(self, progress, color):
@@ -136,7 +149,6 @@ class BombTimer:
         if progress <= 0 or progress > 1:
             return
 
-        # Сглаженные контуры
         self.progress_canvas.create_oval(10, 10, 130, 130, outline="#2C2C54", width=4)
         self.progress_canvas.create_arc(
             10, 10, 130, 130,
